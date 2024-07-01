@@ -1,0 +1,23 @@
+.custom-select {
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .selected-value {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+   
+
+  }

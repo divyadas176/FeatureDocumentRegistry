@@ -1,0 +1,8 @@
+<div class="container">
+<select [(ngModel)]="selectedValue" (change)="onSelectChange($event)" class="custom-select">
+    <option value="">Select an application</option>
+    <option *ngFor="let appName of applications" [value]="appName">{{appName}}</option>
+</select>
+
+<p class="selected-value">{{selectedValue}}</p>
+</div>

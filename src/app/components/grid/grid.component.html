@@ -1,0 +1,133 @@
+
+<button class="btn btn-warning btnCSS"   (click)="addNewRow()">Add Row</button>
+
+<mat-table [dataSource]="myData">
+    <ng-container matColumnDef="releaseNo">
+        <mat-header-cell *matHeaderCellDef class="headerCSS"> Release No. </mat-header-cell>
+        <mat-cell *matCellDef="let myDataRow">
+           
+            <ng-container >
+                {{myDataRow.releaseNo}}
+            </ng-container>
+
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ppmNo">
+        <mat-header-cell *matHeaderCellDef class="headerCSS"> PPM No. </mat-header-cell>
+        <mat-cell *matCellDef="let myDataRow">
+            <ng-container *ngIf="myDataRow.editable; else viewMode">
+                <input [(ngModel)]="myDataRow.ppmNo">
+            </ng-container>
+            <ng-template #viewMode>
+                {{myDataRow.ppmNo}}
+            </ng-template>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="pdsmNo">
+        <mat-header-cell *matHeaderCellDef class="headerCSS"> PDSM No. </mat-header-cell>
+        <mat-cell *matCellDef="let myDataRow">
+            <ng-container *ngIf="myDataRow.editable; else viewMode">
+                <input [(ngModel)]="myDataRow.pdsmNo">
+            </ng-container>
+            <ng-template #viewMode>
+                {{myDataRow.pdsmNo}}
+            </ng-template>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="businessCapabilityName">
+        <mat-header-cell *matHeaderCellDef class="headerCSS"> Business Capability Name </mat-header-cell>
+        <mat-cell *matCellDef="let myDataRow">
+            <ng-container *ngIf="myDataRow.editable; else viewMode">
+                <input [(ngModel)]="myDataRow.businessCapabilityName">
+            </ng-container>
+            <ng-template #viewMode>
+                {{myDataRow.businessCapabilityName}}
+            </ng-template>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef class="headerCSS">Category</mat-header-cell>
+        <mat-cell *matCellDef="let myDataRow">
+         <ng-container *ngIf="myDataRow.editable; else viewMode">
+          <mat-select [(ngModel)]="myDataRow.category">
+            <mat-option value="New Feature">New Feature</mat-option>
+            <mat-option value="Bug Fix">Bug Fix</mat-option>
+      </mat-select>
+         </ng-container>
+  
+          <ng-template #viewMode>
+                  {{myDataRow.category}}
+              </ng-template>
+        </mat-cell>
+      </ng-container>    
+
+      <ng-container matColumnDef="highLevelDesc">
+        <mat-header-cell *matHeaderCellDef class="headerCSS"> High Level Description </mat-header-cell>
+        <mat-cell *matCellDef="let myDataRow">
+            <ng-container *ngIf="myDataRow.editable; else viewMode">
+                <input [(ngModel)]="myDataRow.highLevelDesc">
+            </ng-container>
+            <ng-template #viewMode>
+                {{myDataRow.highLevelDesc}}
+            </ng-template>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="busVsTech">
+        <mat-header-cell *matHeaderCellDef class="headerCSS">Business/Technical</mat-header-cell>
+        <mat-cell *matCellDef="let myDataRow">
+         <ng-container *ngIf="myDataRow.editable; else viewMode">
+          <mat-select [(ngModel)]="myDataRow.busVsTech">
+            <mat-option value="Business">Business</mat-option>
+            <mat-option value="Technical">Technical</mat-option>
+      </mat-select>
+         </ng-container>
+  
+          <ng-template #viewMode>
+                  {{myDataRow.busVsTech}}
+              </ng-template>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="impactedLocs">
+        <mat-header-cell *matHeaderCellDef class="headerCSS"> Impacted Locations </mat-header-cell>
+        <mat-cell *matCellDef="let myDataRow">
+            <ng-container *ngIf="myDataRow.editable; else viewMode">
+                <input [(ngModel)]="myDataRow.impactedLocs">
+            </ng-container>
+            <ng-template #viewMode>
+                {{myDataRow.impactedLocs}}
+            </ng-template>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="addBtn">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let myDataRow">
+          <button mat-button class=" btn btn-success addDatabtnCSS" (click)="addDocument(myDataRow)" *ngIf="myDataRow.showAddButton">Add Data</button>
+          <button mat-button class=" btn btn-success" (click)="editDocument(myDataRow)" *ngIf="myDataRow.editBtn">Edit Data</button>
+        </mat-cell>
+      </ng-container>
+
+      
+
+    <ng-container matColumnDef="icon1">
+        <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+        <mat-cell *matCellDef="let myDataRow"> 
+            <mat-icon (click)="toggleEditMode(myDataRow)" class="icon">edit</mat-icon>
+            <mat-icon (click)="deleteRow(myDataRow)" class="icon">delete</mat-icon> </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let myRowData; columns: displayedColumns"></mat-row>
+    
+</mat-table>
+<!-- <button class="btn btn-warning"   (click)="addNewRow()">Add Row</button> -->
+
+<!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="pageSize"
+               [length]="totalItems" (page)="onPageChange($event)">
+</mat-paginator> -->
+
+    
+
